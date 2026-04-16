@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Mail, Globe, Award, Target, Users, ExternalLink, ChevronRight, Menu, X } from 'lucide-react';
 import { siteContent } from './data/content';
+import candidatePhoto from './assets/candidate.png';
 
 const App = () => {
   const [lang, setLang] = useState('en');
@@ -99,7 +100,7 @@ const App = () => {
               <div className="absolute -inset-4 bg-tm-gold/10 rounded-2xl -rotate-3" />
               <div className="absolute -inset-4 bg-tm-maroon/5 rounded-2xl rotate-2" />
               <img
-                src="./src/assets/candidate.png"
+                src={candidatePhoto}
                 alt={content.hero.name}
                 className="relative rounded-2xl shadow-2xl w-full max-w-sm h-auto object-cover aspect-[3/4] border-4 border-white"
               />
