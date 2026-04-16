@@ -32,9 +32,9 @@ const App = () => {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-tm-maroon rounded-full flex items-center justify-center text-white font-bold text-sm">
+            {/* <div className="w-8 h-8 md:w-10 md:h-10 bg-tm-maroon rounded-full flex items-center justify-center text-white font-bold text-sm">
               LCB
-            </div>
+            </div> */}
             <span className="font-bold text-tm-maroon hidden md:inline tracking-tight">
               {lang === 'en' ? 'LIM CHENG BOON' : '林政雯'}
             </span>
@@ -59,7 +59,7 @@ const App = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <motion.div 
+          <motion.div
             className="w-full md:w-1/2"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -88,8 +88,8 @@ const App = () => {
               </a>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="w-full md:w-1/2 flex justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -98,13 +98,12 @@ const App = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-tm-gold/10 rounded-2xl -rotate-3" />
               <div className="absolute -inset-4 bg-tm-maroon/5 rounded-2xl rotate-2" />
-              <img 
-                src="./src/assets/candidate.png" 
+              <img
+                src="./src/assets/candidate.png"
                 alt={content.hero.name}
                 className="relative rounded-2xl shadow-2xl w-full max-w-sm h-auto object-cover aspect-[3/4] border-4 border-white"
               />
               <div className="absolute -bottom-6 -right-6 bg-tm-gold px-6 py-4 rounded-xl shadow-lg text-white">
-                <p className="text-xs uppercase font-bold tracking-widest opacity-80">Title</p>
                 <p className="text-xl font-bold">DTM</p>
               </div>
             </div>
@@ -124,7 +123,7 @@ const App = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {content.vision.items.map((item, index) => (
-              <motion.div 
+              <motion.div
                 key={item.id}
                 className="p-8 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-white hover:shadow-xl hover:border-tm-maroon/20 transition-all group"
                 variants={fadeInUp}
@@ -144,7 +143,7 @@ const App = () => {
               </motion.div>
             ))}
           </div>
-          
+
           <div className="mt-16 p-8 rounded-2xl bg-tm-maroon text-white text-center shadow-lg">
             <p className="text-xl md:text-2xl font-medium leading-relaxed italic">
               "{content.vision.closing}"
@@ -165,7 +164,7 @@ const App = () => {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {content.experience.sections.map((section, sidx) => (
-              <motion.div 
+              <motion.div
                 key={sidx}
                 className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100"
                 initial={{ opacity: 0, y: 30 }}
@@ -182,8 +181,8 @@ const App = () => {
                     <li key={iidx} className="flex gap-4 group">
                       <div className="mt-1.5 shrink-0 w-2 h-2 rounded-full bg-tm-gold group-hover:scale-150 transition-transform" />
                       <span className="text-slate-700 leading-relaxed font-medium">
-                        {item.includes('⭐') ? 
-                          <span className="bg-tm-gold/10 text-tm-gold px-2 py-0.5 rounded font-bold">{item}</span> 
+                        {item.includes('⭐') ?
+                          <span className="bg-tm-gold/10 text-tm-gold px-2 py-0.5 rounded font-bold">{item}</span>
                           : item
                         }
                       </span>
@@ -205,7 +204,7 @@ const App = () => {
               <p className="text-white/70 text-lg mb-8 max-w-md">
                 {content.contact.message}
               </p>
-              
+
               <div className="space-y-6">
                 <a href={`tel:${content.contact.phone}`} className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-tm-gold transition-colors">
@@ -216,7 +215,7 @@ const App = () => {
                     <p className="text-xl font-bold">{content.contact.phone}</p>
                   </div>
                 </a>
-                
+
                 <a href={`mailto:${content.contact.email}`} className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-tm-gold transition-colors shrink-0">
                     <Mail size={20} />
@@ -232,8 +231,8 @@ const App = () => {
             <div className="bg-white/10 p-8 md:p-10 rounded-3xl border border-white/20 backdrop-blur-md self-stretch flex flex-col justify-center text-center shadow-2xl overflow-hidden">
               <h3 className="text-2xl font-bold mb-4">{lang === 'en' ? 'Vote for Change' : '投我一票'}</h3>
               <p className="text-white/60 mb-8">{lang === 'en' ? 'Together, we empower every club to grow, shine, and thrive!' : '共同努力，赋能每个分会成长、发光、茁壮成长！'}</p>
-              <a 
-                href={content.contact.nominationUrl} 
+              <a
+                href={content.contact.nominationUrl}
                 className="w-full bg-tm-gold hover:bg-tm-gold/90 text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 text-lg active:scale-95"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -242,7 +241,7 @@ const App = () => {
               </a>
             </div>
           </div>
-          
+
           <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-50">
             <p>© 2026 {lang === 'en' ? 'Lim Cheng Boon' : '林政雯'}. All rights reserved.</p>
             <p>District 80 Toastmasters International CGD Candidate 2026-27</p>
