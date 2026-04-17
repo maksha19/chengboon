@@ -245,8 +245,10 @@ const App = () => {
               <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">{content.testimonials.title}</h2>
               <p className="text-slate-600">{content.testimonials.subtitle}</p>
             </div>
-            <a
-              href={`mailto:${content.contact.email}?subject=Testimonial for Lim Cheng Boon`}
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfMC-y0Vo9oUsa_sRvtlDY6mGEXHx3QuJbHKf0Y2zxYmbFA4w/viewform?usp=publish-editor"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-3 bg-tm-maroon text-white font-bold rounded-full flex items-center gap-2 hover:bg-tm-maroon/90 transition-all shadow-lg active:scale-95 w-fit"
             >
               <PenLine size={18} />
