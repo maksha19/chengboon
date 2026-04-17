@@ -39,7 +39,8 @@ export const siteContent = {
             "2022–2023: Area Director, Area L2",
             "2024–2025: Vice President Membership (VPM), Eunos Mandarin & Encantada TMCs",
             "2025–2026: Secretary & VPPR roles",
-            "⭐ 2022–2023: District 80 Area Director of the Year"
+            "⭐ 2022–2023: District 80 Area Director of the Year",
+            "⭐ 2025–2026: Tong Zhou: Smedley Distinguished Club Award (D80 AC 2026)"
           ]
         },
         {
@@ -120,7 +121,8 @@ export const siteContent = {
             "2022–2023: 友诺士华语讲演会会长",
             "2022–2023: L2 分区总监",
             "2021–2022: L2 分区备稿 & 即席演讲比赛冠军",
-            "⭐ 2022–2023: 80 区域年度最杰出分区总监"
+            "⭐ 2022–2023: 80 区域年度最杰出分区总监",
+            "⭐ 2025–2026: 同舟华语讲演会获得Smedley卓越分会奖，并在2026 年度80区域常年大会获表扬"
           ]
         },
         {

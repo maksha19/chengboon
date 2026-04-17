@@ -11,11 +11,15 @@ import ach3 from './assets/achivements/photo_3.jpeg';
 import ach4 from './assets/achivements/photo_4.jpeg';
 import ach5 from './assets/achivements/photo_5.jpeg';
 import ach6 from './assets/achivements/photo_6.jpeg';
+import ach7 from './assets/achivements/photo_7.jpeg';
+import ach8 from './assets/achivements/photo_8.jpeg';
+import ach9 from './assets/achivements/photo_9.jpeg';
+import ach10 from './assets/achivements/photo_10.jpeg';
 
-const achievementPhotos = [ach1, ach2, ach3, ach4, ach5, ach6];
+const achievementPhotos = [ach1, ach2, ach3, ach4, ach5, ach6, ach7, ach8, ach9, ach10];
 
 // REPLACE THIS with your Google Apps Script Web App URL after deployment
-const TESTIMONIALS_API_URL = ""; 
+const TESTIMONIALS_API_URL = "https://script.google.com/macros/s/AKfycbzeAxP3TOE_N4uZE40YPJ-0wxEf5mx7oB0J7hIWENxs27fb_DmbvvsYbtRo3JqS-H1w/exec";
 
 const App = () => {
   const [lang, setLang] = useState('en');
@@ -32,14 +36,14 @@ const App = () => {
           const res = await fetch(TESTIMONIALS_API_URL);
           if (!res.ok) throw new Error("API response was not ok");
           const data = await res.json();
-          
+
           if (Array.isArray(data) && data.length > 0) {
             setTestimonials(data);
             setIsLoading(false);
             return;
           }
         }
-        
+
         // Fallback to local data if API is not set, empty, or fails
         const localData = await import('./data/testimonials.json');
         setTestimonials(localData.default);
@@ -111,7 +115,7 @@ const App = () => {
                 {content.hero.name}
               </h1>
             </div>
-            <p className="text-xl md:text-2xl text-slate-600 mb-8 italic border-l-4 border-tm-gold pl-6 py-2 leading-relaxed">
+            <p className="text-xl md:text-2xl bg-tm-maroon rounded-2xl text-white mb-8 italic pl-6 py-2 leading-relaxed">
               "{content.hero.slogan}"
             </p>
             <div className="flex flex-wrap gap-4">
@@ -236,14 +240,14 @@ const App = () => {
           <h2 className="text-3xl md:text-5xl font-bold text-tm-maroon mb-4">{content.achievements.title}</h2>
           <p className="text-slate-600">{content.achievements.subtitle}</p>
         </div>
-        
+
         <div className="flex overflow-hidden group">
-          <motion.div 
+          <motion.div
             className="flex gap-6 px-6"
             animate={{ x: [0, -1800] }}
-            transition={{ 
-              duration: 30, 
-              repeat: Infinity, 
+            transition={{
+              duration: 30,
+              repeat: Infinity,
               ease: "linear",
               repeatType: "loop"
             }}
@@ -266,7 +270,7 @@ const App = () => {
               <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">{content.testimonials.title}</h2>
               <p className="text-slate-600">{content.testimonials.subtitle}</p>
             </div>
-            <a 
+            <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfMC-y0Vo9oUsa_sRvtlDY6mGEXHx3QuJbHKf0Y2zxYmbFA4w/viewform?usp=publish-editor"
               target="_blank"
               rel="noopener noreferrer"
@@ -292,7 +296,7 @@ const App = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
                 <AnimatePresence>
                   {testimonials.map((testi, idx) => (
-                    <motion.div 
+                    <motion.div
                       key={testi.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -356,7 +360,7 @@ const App = () => {
             </div>
 
             <div className="bg-white/10 p-8 md:p-10 rounded-3xl border border-white/20 backdrop-blur-md self-stretch flex flex-col justify-center text-center shadow-2xl overflow-hidden">
-              <h3 className="text-2xl font-bold mb-4">{lang === 'en' ? 'Vote for Change' : '投我一票'}</h3>
+              <h3 className="text-2xl font-bold mb-4">{lang === 'en' ? 'Vote for Cheng Boon' : '请投林政雯一票'}</h3>
               <p className="text-white/60 mb-8">{lang === 'en' ? 'Together, we empower every club to grow, shine, and thrive!' : '共同努力，赋能每个分会成长、发光、茁壮成长！'}</p>
               <a
                 href={content.contact.nominationUrl}
