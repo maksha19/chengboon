@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/chengboon/",
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),

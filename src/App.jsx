@@ -215,14 +215,14 @@ const App = () => {
           <h2 className="text-3xl md:text-5xl font-bold text-tm-maroon mb-4">{content.achievements.title}</h2>
           <p className="text-slate-600">{content.achievements.subtitle}</p>
         </div>
-        
+
         <div className="flex overflow-hidden group">
-          <motion.div 
+          <motion.div
             className="flex gap-6 px-6"
             animate={{ x: [0, -1800] }}
-            transition={{ 
-              duration: 30, 
-              repeat: Infinity, 
+            transition={{
+              duration: 30,
+              repeat: Infinity,
               ease: "linear",
               repeatType: "loop"
             }}
@@ -245,7 +245,7 @@ const App = () => {
               <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">{content.testimonials.title}</h2>
               <p className="text-slate-600">{content.testimonials.subtitle}</p>
             </div>
-            <a 
+            <a
               href={`mailto:${content.contact.email}?subject=Testimonial for Lim Cheng Boon`}
               className="px-6 py-3 bg-tm-maroon text-white font-bold rounded-full flex items-center gap-2 hover:bg-tm-maroon/90 transition-all shadow-lg active:scale-95 w-fit"
             >
@@ -256,7 +256,7 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
             {testimonials.map((testi, idx) => (
-              <motion.div 
+              <motion.div
                 key={testi.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
