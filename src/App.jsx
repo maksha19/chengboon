@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Mail, Globe, Award, Target, Users, ExternalLink, ChevronRight, Menu, X } from 'lucide-react';
+import { Phone, Mail, Globe, Award, Target, Users, ExternalLink, ChevronRight, Menu, X, Quote, PenLine } from 'lucide-react';
 import { siteContent } from './data/content';
 import candidatePhoto from './assets/candidate.png';
 
+// Achievement Photos
+import ach1 from './assets/achivements/photo_1.jpeg';
+import ach2 from './assets/achivements/photo_2.jpeg';
+import ach3 from './assets/achivements/photo_3.jpeg';
+import ach4 from './assets/achivements/photo_4.jpeg';
+import ach5 from './assets/achivements/photo_5.jpeg';
+import ach6 from './assets/achivements/photo_6.jpeg';
+
+const achievementPhotos = [ach1, ach2, ach3, ach4, ach5, ach6];
+
 const App = () => {
   const [lang, setLang] = useState('en');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [testimonials, setTestimonials] = useState([]);
   const content = siteContent[lang];
+
+  // Simulate API Fetch for Testimonials
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        // In a real app, this would be: const res = await fetch('api/testimonials');
+        const data = await import('./data/testimonials.json');
+        setTestimonials(data.default);
+      } catch (error) {
+        console.error("Failed to fetch testimonials:", error);
+      }
+    };
+    fetchTestimonials();
+  }, []);
 
   const toggleLang = () => {
     setLang(prev => (prev === 'en' ? 'cn' : 'en'));
@@ -19,24 +43,13 @@ const App = () => {
     transition: { duration: 0.6 }
   };
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            {/* <div className="w-8 h-8 md:w-10 md:h-10 bg-tm-maroon rounded-full flex items-center justify-center text-white font-bold text-sm">
-              LCB
-            </div> */}
-            <span className="font-bold text-tm-maroon hidden md:inline tracking-tight">
+            <span className="font-bold text-tm-maroon tracking-tight">
               {lang === 'en' ? 'LIM CHENG BOON' : '林政雯'}
             </span>
           </div>
@@ -190,6 +203,81 @@ const App = () => {
                     </li>
                   ))}
                 </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements Carousel */}
+      <section id="achievements" className="py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-tm-maroon mb-4">{content.achievements.title}</h2>
+          <p className="text-slate-600">{content.achievements.subtitle}</p>
+        </div>
+        
+        <div className="flex overflow-hidden group">
+          <motion.div 
+            className="flex gap-6 px-6"
+            animate={{ x: [0, -1800] }}
+            transition={{ 
+              duration: 30, 
+              repeat: Infinity, 
+              ease: "linear",
+              repeatType: "loop"
+            }}
+          >
+            {[...achievementPhotos, ...achievementPhotos].map((photo, index) => (
+              <div key={index} className="w-80 h-60 md:w-96 md:h-72 shrink-0 rounded-2xl shadow-lg border-4 border-white overflow-hidden">
+                <img src={photo} alt="" className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="section-padding bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <p className="text-tm-maroon font-bold tracking-widest text-sm mb-2 uppercase">{content.testimonials.overline}</p>
+              <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">{content.testimonials.title}</h2>
+              <p className="text-slate-600">{content.testimonials.subtitle}</p>
+            </div>
+            <a 
+              href={`mailto:${content.contact.email}?subject=Testimonial for Lim Cheng Boon`}
+              className="px-6 py-3 bg-tm-maroon text-white font-bold rounded-full flex items-center gap-2 hover:bg-tm-maroon/90 transition-all shadow-lg active:scale-95 w-fit"
+            >
+              <PenLine size={18} />
+              {content.testimonials.buttonText}
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+            {testimonials.map((testi, idx) => (
+              <motion.div 
+                key={testi.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all"
+              >
+                <Quote className="absolute top-8 right-8 text-tm-maroon/5 w-12 h-12 group-hover:text-tm-maroon/10 transition-colors" />
+                <p className="text-slate-700 italic leading-relaxed text-lg mb-8 relative z-10">
+                  "{lang === 'en' ? testi.quote_en : testi.quote_cn}"
+                </p>
+                <div className="pt-6 border-t border-slate-50">
+                  <h4 className="font-bold text-slate-900 text-lg mb-1">{lang === 'en' ? testi.name : testi.name_cn}</h4>
+                  <p className="text-tm-maroon text-sm font-semibold mb-1 uppercase tracking-tight">
+                    {lang === 'en' ? testi.club_en : testi.club_cn}
+                  </p>
+                  <div className="flex items-center justify-between text-slate-400 text-xs">
+                    <span>{lang === 'en' ? testi.role_en : testi.role_cn}</span>
+                    <span className="px-2 py-0.5 bg-slate-100 rounded text-slate-500 font-bold">{testi.district}</span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

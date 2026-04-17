@@ -62,6 +62,16 @@ export const siteContent = {
         }
       ]
     },
+    achievements: {
+      title: "Achievements & Moments",
+      subtitle: "Capturing the essence of growth and leadership excellence."
+    },
+    testimonials: {
+      overline: "VOICE OF THE MEMBERS",
+      title: "Member Testimonials",
+      subtitle: "Hear from our community across District 80.",
+      buttonText: "Write Testimonial"
+    },
     contact: {
       title: "Let's walk this journey together",
       message: "If you have any ideas or feedback, please feel free to reach out. I look forward to seeing you at DCM 2 on 2 May 2026.",
@@ -132,6 +142,16 @@ export const siteContent = {
           ]
         }
       ]
+    },
+    achievements: {
+      title: "成就与瞬间",
+      subtitle: "捕捉成长与卓越领导力的精彩瞬间。"
+    },
+    testimonials: {
+      overline: "会友心声",
+      title: "分会会友证言",
+      subtitle: "听听来自 80 区域各分会会友的心声。",
+      buttonText: "撰写证言"
     },
     contact: {
       title: "让我们携手同行",
