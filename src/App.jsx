@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Mail, Globe, Award, Target, Users, ExternalLink, ChevronRight, Menu, X, Quote, PenLine } from 'lucide-react';
+import { Phone, Mail, Globe, Award, Target, Users, ExternalLink, ChevronRight, Menu, X, Quote, PenLine, Loader2 } from 'lucide-react';
 import { siteContent } from './data/content';
 import candidatePhoto from './assets/candidate.png';
 
@@ -14,20 +14,41 @@ import ach6 from './assets/achivements/photo_6.jpeg';
 
 const achievementPhotos = [ach1, ach2, ach3, ach4, ach5, ach6];
 
+// REPLACE THIS with your Google Apps Script Web App URL after deployment
+const TESTIMONIALS_API_URL = ""; 
+
 const App = () => {
   const [lang, setLang] = useState('en');
   const [testimonials, setTestimonials] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const content = siteContent[lang];
 
-  // Simulate API Fetch for Testimonials
   useEffect(() => {
     const fetchTestimonials = async () => {
+      setIsLoading(true);
       try {
-        // In a real app, this would be: const res = await fetch('api/testimonials');
-        const data = await import('./data/testimonials.json');
-        setTestimonials(data.default);
+        // First try to fetch from the live API
+        if (TESTIMONIALS_API_URL) {
+          const res = await fetch(TESTIMONIALS_API_URL);
+          if (!res.ok) throw new Error("API response was not ok");
+          const data = await res.json();
+          
+          if (Array.isArray(data) && data.length > 0) {
+            setTestimonials(data);
+            setIsLoading(false);
+            return;
+          }
+        }
+        
+        // Fallback to local data if API is not set, empty, or fails
+        const localData = await import('./data/testimonials.json');
+        setTestimonials(localData.default);
       } catch (error) {
-        console.error("Failed to fetch testimonials:", error);
+        console.error("Using local data fallback due to fetch error:", error);
+        const localData = await import('./data/testimonials.json');
+        setTestimonials(localData.default);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchTestimonials();
@@ -215,14 +236,14 @@ const App = () => {
           <h2 className="text-3xl md:text-5xl font-bold text-tm-maroon mb-4">{content.achievements.title}</h2>
           <p className="text-slate-600">{content.achievements.subtitle}</p>
         </div>
-
+        
         <div className="flex overflow-hidden group">
-          <motion.div
+          <motion.div 
             className="flex gap-6 px-6"
             animate={{ x: [0, -1800] }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
+            transition={{ 
+              duration: 30, 
+              repeat: Infinity, 
               ease: "linear",
               repeatType: "loop"
             }}
@@ -256,32 +277,47 @@ const App = () => {
             </a>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-            {testimonials.map((testi, idx) => (
-              <motion.div
-                key={testi.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all"
-              >
-                <Quote className="absolute top-8 right-8 text-tm-maroon/5 w-12 h-12 group-hover:text-tm-maroon/10 transition-colors" />
-                <p className="text-slate-700 italic leading-relaxed text-lg mb-8 relative z-10">
-                  "{lang === 'en' ? testi.quote_en : testi.quote_cn}"
-                </p>
-                <div className="pt-6 border-t border-slate-50">
-                  <h4 className="font-bold text-slate-900 text-lg mb-1">{lang === 'en' ? testi.name : testi.name_cn}</h4>
-                  <p className="text-tm-maroon text-sm font-semibold mb-1 uppercase tracking-tight">
-                    {lang === 'en' ? testi.club_en : testi.club_cn}
-                  </p>
-                  <div className="flex items-center justify-between text-slate-400 text-xs">
-                    <span>{lang === 'en' ? testi.role_en : testi.role_cn}</span>
-                    <span className="px-2 py-0.5 bg-slate-100 rounded text-slate-500 font-bold">{testi.district}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="min-h-[400px] relative">
+            {isLoading ? (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-tm-maroon/40 gap-4">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                >
+                  <Loader2 size={48} />
+                </motion.div>
+                <p className="font-medium animate-pulse">Loading Testimonials...</p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+                <AnimatePresence>
+                  {testimonials.map((testi, idx) => (
+                    <motion.div 
+                      key={testi.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 relative group hover:shadow-xl transition-all"
+                    >
+                      <Quote className="absolute top-8 right-8 text-tm-maroon/5 w-12 h-12 group-hover:text-tm-maroon/10 transition-colors" />
+                      <p className="text-slate-700 italic leading-relaxed text-lg mb-8 relative z-10">
+                        "{lang === 'en' ? testi.quote_en : testi.quote_cn}"
+                      </p>
+                      <div className="pt-6 border-t border-slate-50">
+                        <h4 className="font-bold text-slate-900 text-lg mb-1">{lang === 'en' ? testi.name : testi.name_cn}</h4>
+                        <p className="text-tm-maroon text-sm font-semibold mb-1 uppercase tracking-tight">
+                          {lang === 'en' ? testi.club_en : testi.club_cn}
+                        </p>
+                        <div className="flex items-center justify-between text-slate-400 text-xs">
+                          <span>{lang === 'en' ? testi.role_en : testi.role_cn}</span>
+                          <span className="px-2 py-0.5 bg-slate-100 rounded text-slate-500 font-bold">{testi.district}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            )}
           </div>
         </div>
       </section>
