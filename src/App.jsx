@@ -12,7 +12,6 @@ import ach4 from './assets/achivements/photo_4.jpeg';
 import ach5 from './assets/achivements/photo_5.jpeg';
 import ach6 from './assets/achivements/photo_6.jpeg';
 import ach7 from './assets/achivements/photo_7.jpeg';
-import ach8 from './assets/achivements/photo_8.jpeg';
 import ach9 from './assets/achivements/photo_9.jpeg';
 import ach10 from './assets/achivements/photo_10.jpeg';
 import ach11 from './assets/achivements/photo_11.jpeg';
@@ -27,7 +26,7 @@ import ach19 from './assets/achivements/photo_19.jpeg';
 import ach20 from './assets/achivements/photo_20.jpeg';
 
 const achievementPhotos = [
-  ach1, ach2, ach3, ach4, ach5, ach6, ach7, ach8, ach9, ach10,
+  ach1, ach2, ach3, ach4, ach5, ach6, ach7, ach9, ach10,
   ach11, ach12, ach13, ach14, ach15, ach16, ach17, ach18, ach19, ach20
 ];
 
@@ -136,6 +135,9 @@ const App = () => {
               <a href="#experience" className="btn-secondary">
                 {lang === 'en' ? 'My Journey' : '我的历程'}
               </a>
+            </div>
+            <div className='mt-10'>
+              <h1 className="text-4xl font-bold mb-4">{lang === 'en' ? 'Vote for Change Vote 🗳️ for Cheng Boon' : '投票求变，投票给郑文'}</h1>
             </div>
           </motion.div>
 
@@ -255,9 +257,9 @@ const App = () => {
         <div className="flex overflow-hidden group">
           <motion.div
             className="flex gap-6 px-6"
-            animate={{ x: [0, -1800] }}
+            animate={{ x: [0, -7752] }}
             transition={{
-              duration: 30,
+              duration: 60,
               repeat: Infinity,
               ease: "linear",
               repeatType: "loop"
