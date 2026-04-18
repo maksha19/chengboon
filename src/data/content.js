@@ -40,7 +40,7 @@ export const siteContent = {
             "2024–2025: Vice President Membership (VPM), Eunos Mandarin & Encantada TMCs",
             "2025–2026: Secretary & VPPR roles",
             "⭐ 2022–2023: District 80 Area Director of the Year",
-            "⭐ 2025–2026: Tong Zhou: Smedley Distinguished Club Award (D80 AC 2026)"
+
           ]
         },
         {
@@ -49,7 +49,8 @@ export const siteContent = {
             "2022–2023: Club Coach, Toa Payoh East Tong Zhou Mandarin TMC",
             "2024–2026: Advisor, Toa Payoh East Tong Zhou Mandarin TMC",
             "2024–2025: Advisor, Telok Blangah Mandarin TMC",
-            "⭐ 2025: Perfect 10 DCP & President's Distinguished Club Award (Tong Zhou)"
+            "⭐  Tong Zhou: 2025 Perfect 10 DCP & President's Distinguished Club Award",
+            "⭐  Tong Zhou: 2026 Smedley Distinguished Club Award"
           ]
         },
         {
@@ -122,8 +123,7 @@ export const siteContent = {
             "2022–2023: L2 分区总监",
             "2021–2022: L2 分区备稿 & 即席演讲比赛冠军",
             "⭐ 2022–2023: 80 区域年度最杰出分区总监",
-            "⭐ 2025–2026: 同舟华语讲演会获得Smedley卓越分会奖",
-            "⭐ 2026 年度80区域常年大会获表扬"
+
           ]
         },
         {
@@ -132,7 +132,8 @@ export const siteContent = {
             "2022–2023: 同舟华语讲演会分会教练",
             "2024–2026: 同舟华语讲演会顾问",
             "2024–2025: 直落布兰雅华语讲演会顾问",
-            "⭐ 2025: 同舟获得十全十美奖与会长级卓越分会奖"
+            "⭐  同舟华语讲演会获得十全十美奖与会长级卓越分会奖，并在2025 年度80区域常年大会获表扬",
+            "⭐ 同舟华语讲演会获得Smedley卓越分会奖，并在2026 年度80区域常年大会获表扬"
           ]
         },
         {
