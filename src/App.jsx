@@ -137,7 +137,7 @@ const App = () => {
               </a>
             </div>
             <div className='mt-10'>
-              <h1 className="text-4xl font-bold mb-4">{lang === 'en' ? 'Vote for Change Vote 🗳️ for Cheng Boon' : '投票求变，投票给郑文'}</h1>
+              <h1 className="text-4xl font-bold mb-4">{lang === 'en' ? 'Vote for Change Vote 🗳️ for Cheng Boon' : '为改变投一票 🗳️ 把这一票投给林政雯卓越讲员'}</h1>
             </div>
           </motion.div>
 
