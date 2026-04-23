@@ -2,7 +2,7 @@ export const siteContent = {
   en: {
     hero: {
       name: "Lim Cheng Boon, DTM",
-      nomination: "Candidate for Club Growth Director 2026–2027",
+      nomination: "Candidate for District 80, Club Growth Director 2026–2027",
       district: "District 80 · Toastmasters International",
       slogan: "Pave the way with service, Shine the light with growth — Let every club sparkle with purpose!",
     },
@@ -86,7 +86,7 @@ export const siteContent = {
   cn: {
     hero: {
       name: "林政雯, DTM",
-      nomination: "2026-2027 年度市场拓展总监候选人",
+      nomination: "2026–2027 年度  80 区城市场拓展总监候选人（",
       district: "国际讲演会 80 区域",
       slogan: "竭诚服务；为您铺路；为您点灯；助您成长！",
     },

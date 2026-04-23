@@ -9,9 +9,9 @@ import ach1 from './assets/achivements/photo_1.jpeg';
 import ach2 from './assets/achivements/photo_2.jpeg';
 import ach3 from './assets/achivements/photo_3.jpeg';
 import ach4 from './assets/achivements/photo_4.jpeg';
-import ach5 from './assets/achivements/photo_5.jpeg';
 import ach6 from './assets/achivements/photo_6.jpeg';
 import ach7 from './assets/achivements/photo_7.jpeg';
+import ach8 from './assets/achivements/photo_8.jpeg';
 import ach9 from './assets/achivements/photo_9.jpeg';
 import ach10 from './assets/achivements/photo_10.jpeg';
 import ach11 from './assets/achivements/photo_11.jpeg';
@@ -23,11 +23,10 @@ import ach16 from './assets/achivements/photo_16.jpeg';
 import ach17 from './assets/achivements/photo_17.jpeg';
 import ach18 from './assets/achivements/photo_18.jpeg';
 import ach19 from './assets/achivements/photo_19.jpeg';
-import ach20 from './assets/achivements/photo_20.jpeg';
 
 const achievementPhotos = [
-  ach1, ach2, ach3, ach4, ach5, ach6, ach7, ach9, ach10,
-  ach11, ach12, ach13, ach14, ach15, ach16, ach17, ach18, ach19, ach20
+  ach1, ach2, ach3, ach4, ach6, ach7, ach8, ach9, ach10,
+  ach11, ach12, ach13, ach14, ach15, ach16, ach17, ach18, ach19
 ];
 
 const TESTIMONIALS_API_URL = "https://script.google.com/macros/s/AKfycbzeAxP3TOE_N4uZE40YPJ-0wxEf5mx7oB0J7hIWENxs27fb_DmbvvsYbtRo3JqS-H1w/exec";
@@ -137,7 +136,7 @@ const App = () => {
               </a>
             </div>
             <div className='mt-10'>
-              <h1 className="text-4xl font-bold mb-4">{lang === 'en' ? 'Vote for Change Vote 🗳️ for Cheng Boon' : '为改变投一票 🗳️ 把这一票投给林政雯卓越讲员'}</h1>
+              <h1 className="text-4xl font-bold mb-4">{lang === 'en' ? '2/5/2026, Vote for Change Vote 🗳️ for Cheng Boon' : '2/5/2026, 为改变投一票 🗳️ 把这一票投给林政雯卓越讲员'}</h1>
             </div>
           </motion.div>
 
